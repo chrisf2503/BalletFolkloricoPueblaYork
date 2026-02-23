@@ -1,0 +1,10 @@
+.navContainer{
+    display: flex;
+    flex-direction: row;
+    justify-items: flex-start;
+    justify-content: space-around;
+ }
+.linkContainer{
+    display: flex;
+    flex-wrap: wrap;
+} /*/
