@@ -3,11 +3,11 @@ function navBar(){
     return (
         <>
             <div className='navContainer'>
-                <div>Ballet Folklorico de Puebla York</div>
+                <div><h3>Ballet Folklorico de Puebla York</h3></div>
                 <div className="linkContainer">
-                    <div>Link 1</div>
-                    <div>Link 2</div>
-                    <div>Link 3</div>
+                    <div className="links"><p>Link 1</p></div>
+                    <div className="links"><p>Link 2</p></div>
+                    <div className="links"><p>Link 3</p></div>
                 </div>
                 
             </div>

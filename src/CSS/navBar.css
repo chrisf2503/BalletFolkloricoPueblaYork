@@ -1,10 +1,15 @@
 .navContainer{
     display: flex;
+    justify-content: flex-start;
     flex-direction: row;
-    justify-items: flex-start;
-    justify-content: space-around;
+    justify-content: space-between;
  }
 .linkContainer{
+    width: 66%;
     display: flex;
+    justify-content: flex-end;
     flex-wrap: wrap;
-} /*/
+} 
+.links{
+    padding: 10px;
+}
