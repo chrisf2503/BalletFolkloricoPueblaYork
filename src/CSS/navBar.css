@@ -3,13 +3,21 @@
     justify-content: flex-start;
     flex-direction: row;
     justify-content: space-between;
- }
+    align-items: center;
+}
 .linkContainer{
-    width: 66%;
+    width: 66.66%;
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
+    text-align: center;
 } 
 .links{
-    padding: 10px;
+    width: 200px;
+    padding: 20px;
+}
+
+#lastLink{
+    background-color: black;
+    color: white;
 }
