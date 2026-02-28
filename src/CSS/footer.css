@@ -3,11 +3,11 @@
     color: white;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; 
 }
 
 .content{
-    padding: 15px;
+    padding: 20px;
     max-width: 1200px;
     width: 100%;
 }

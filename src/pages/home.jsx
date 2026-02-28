@@ -3,10 +3,15 @@ import Footer from './components/footer';
 function Home(){
     return (
         <div className='pages'>
-            
-            <NavBar />
+            <div className='navBar'>
+                <NavBar/>
+            </div>
+            <div className='content'>
 
-            <Footer/>
+            </div>
+            <div className='footer'>
+                <Footer/>
+            </div>
         </div>  
     );
 }

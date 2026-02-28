@@ -27,13 +27,16 @@
     background-color: black;
     color: white;
 }
-
+.menu_button{
+    display: none;
+}
 /* Mobile Styles */
 @media (max-width: 768px) {
     .navContainer{
-        justify-content: center;
+        justify-content: space-between;   
     }
     .linkContainer {
+        display: none;
         position: absolute;
         top: 45px;
         left: 0;
@@ -50,5 +53,9 @@
     .links {
         width: 100%;
         padding: 15px 0;
+    }
+    .menu_button{
+        display: block;
+        padding-right: 15px;
     }
 }
