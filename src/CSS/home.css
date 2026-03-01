@@ -1,0 +1,27 @@
+.homeContent{
+    display: flex;
+    flex-direction: column;
+    
+}.hero{
+    text-align: center;
+}
+.gallerySection,.aboutmeSection{ 
+    padding: 25px;
+}
+
+.gallery,.aboutMe{
+    border-radius: 10px;
+    padding: 25px;
+    background-color: lightgray;
+}
+
+.galleryLink,.brief{
+    font-size: x-large;
+
+}
+.galleryLink{
+    color: blue;
+}
+.galleryTitle{
+    font-size: x-large;
+}
