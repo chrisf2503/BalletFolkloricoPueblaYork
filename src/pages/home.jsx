@@ -32,6 +32,13 @@ function Home(){
                         </p>
                     </div>
                 </section>
+                <section className="joinSection">
+                    <div className='join'>
+                        <p className="joinTItle">Join us</p>
+                        <p className="brief">Join our company, we are looking for talented and willing to learn individuals</p>
+                        <button className='contact'>Contact us</button>
+                   </div>
+                </section>
             </main>
 
             <Footer/>
