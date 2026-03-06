@@ -5,11 +5,11 @@ function Footer(){
         <>
             <div className="footer_body">
                 <div className="content">
-                    <p>Ballet Folklorico de Puebla York</p>
-                    <p>____</p>
+                    <p>Mariachi Corazon de Mexico</p>
+                    <p>______</p>
                     <p>@ 2026 All rights reserved</p>
-                    <p>Balletfolkloricopueblayork@gmail.com</p>
-                    <p>917-562-9571</p>
+                    <p>Corazondemexico@gmail.com</p>
+                    <p>347-870-9491</p>
                 </div>
             </div>
         </>

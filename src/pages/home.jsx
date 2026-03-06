@@ -1,8 +1,16 @@
+import { useEffect, useRef } from 'react';
 import NavBar from './components/navBar';
 import Footer from './components/footer';
 import '../CSS/home.css'
 import introVideo from '../assets/Intro_video.mp4';
 function Home(){
+    const heroVideoRef = useRef(null);
+
+    useEffect(() => {
+        if (!heroVideoRef.current) return;
+        heroVideoRef.current.play().catch(() => {});
+    }, []);
+
     return (
         <div className='homePage'>
 
@@ -10,7 +18,15 @@ function Home(){
 
             <main className='homeContent'>
                 <div className='hero'>
-                    <video className="heroVideo" controls>
+                    <video
+                        ref={heroVideoRef}
+                        className="heroVideo"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="auto"
+                    >
                         <source src={introVideo} type="video/mp4" />
                             Your browser does not support the video tag.
                     </video>
@@ -18,9 +34,9 @@ function Home(){
 
                 <section className='gallerySection'>
                     <div className='gallery'>
-                        <p className='galleryTitle'>Gallery</p>
-                        <p className='brief'>Look at our photo gallery</p>
-                        <p className='galleryLink'>View full gallery</p>
+                        <p className='galleryTitle'>Galería</p>
+                        <p className='brief'>Echa un vistazo a nuestro increíble rendimiento y eventos.</p>
+                        <p className='galleryLink'>Ver galería completa</p>
                     </div>
                     <div className='slideShow'>
                         Slideshow section using animated transitions
