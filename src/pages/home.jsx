@@ -1,15 +1,67 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import NavBar from './components/navBar';
 import Footer from './components/footer';
 import '../CSS/home.css'
-import introVideo from '../assets/Intro_video.mp4';
+import introVideo from '../assets/CorazondeMexico.mp4';
+import photo1 from '../photogallary/img1.jpg'
+import photo2 from '../photogallary/img2.jpg'
+import photo3 from '../photogallary/img3.jpg'
+import photo4 from '../photogallary/img4.jpg'
+import photo5 from '../photogallary/img5.jpg'
+import logo from '../assets/mariachi_corazon_logo.png'
 function Home(){
     const heroVideoRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
+    const [activePhoto, setActivePhoto] = useState(0);
+    const [isResettingTrack, setIsResettingTrack] = useState(false);
+    const photos = [
+        { src: photo1, alt: 'Mariachi performance 1' },
+        { src: photo2, alt: 'Mariachi performance 2' },
+        { src: photo3, alt: 'Mariachi performance 3' },
+        { src: photo4, alt: 'Mariachi performance 4' },
+        { src: photo5, alt: 'Mariachi performance 5' },
+    ];
+    const loopedPhotos = [...photos, ...photos];
 
     useEffect(() => {
         if (!heroVideoRef.current) return;
         heroVideoRef.current.play().catch(() => {});
     }, []);
+
+    useEffect(() => {
+        const mobileQuery = window.matchMedia('(max-width: 900px)');
+        const handleViewportChange = () => setIsMobile(mobileQuery.matches);
+
+        handleViewportChange();
+        mobileQuery.addEventListener('change', handleViewportChange);
+        return () => mobileQuery.removeEventListener('change', handleViewportChange);
+    }, []);
+
+    useEffect(() => {
+        if (!isMobile) {
+            setActivePhoto(0);
+            setIsResettingTrack(false);
+            return;
+        }
+
+        const intervalId = window.setInterval(() => {
+            setActivePhoto((current) => current + 1);
+        }, 2200);
+
+        return () => window.clearInterval(intervalId);
+    }, [isMobile, photos.length]);
+
+    const handleMobileTrackTransitionEnd = () => {
+        if (!isMobile || activePhoto !== photos.length) return;
+
+        setIsResettingTrack(true);
+        setActivePhoto(0);
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+                setIsResettingTrack(false);
+            });
+        });
+    };
 
     return (
         <div className='homePage'>
@@ -39,7 +91,31 @@ function Home(){
                         <p className='galleryLink'>Ver galería completa</p>
                     </div>
                     <div className='slideShow'>
-                        Slideshow section using animated transitions
+                        {isMobile ? (
+                            <ul
+                                className={`photos photosMobile${isResettingTrack ? ' noTrackTransition' : ''}`}
+                                style={{ '--photo-count': photos.length, '--active-index': activePhoto }}
+                                onTransitionEnd={handleMobileTrackTransitionEnd}
+                            >
+                                {loopedPhotos.map((photo, index) => (
+                                    <li className='pnj' key={`${photo.alt}-mobile-${index}`}>
+                                        <img src={photo.src} alt={photo.alt} />
+                                    </li>
+                                ))}
+                            </ul>
+                        ) : (
+                            <ul className='photos' style={{ '--photo-count': photos.length }}>
+                                {loopedPhotos.map((photo, index) => (
+                                    <li
+                                        className={`pnj${index >= photos.length ? ' isDuplicate' : ''}`}
+                                        key={`${photo.alt}-${index}`}
+                                        aria-hidden={index >= photos.length}
+                                    >
+                                        <img src={photo.src} alt={index < photos.length ? photo.alt : ''} />
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                 </section>
                 <section className='aboutMeSection'>
@@ -52,11 +128,21 @@ function Home(){
                         </p>
                     </div>
                 </section>
-                <section className="joinSection">
-                    <div className='join'>
-                        <p className="joinTitle">Join us</p>
-                        <p className="brief">Join our company. We are looking for talented individuals who are willing to learn.</p>
-                        <button className='contact'>Contact us</button>
+                <section className="informationSection">
+                    <div className='info'>
+                        <div className='service'>
+                            <h4>Servicio</h4>
+
+                            <ul className='list'>
+                                <li>Eventos</li>
+                                <li>Bodas</li>
+                                <li>Funerales</li>
+                                <li>Serenatas</li>
+                            </ul>
+                        </div>
+                        <div className='Social_Midea'>
+                            <img src={logo} className='logo'/>
+                        </div>
                    </div>
                 </section>
             </main>

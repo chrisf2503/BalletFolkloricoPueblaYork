@@ -1,5 +1,8 @@
 .aboutusContent{
-    justify-content: center ;
+    justify-content: center;
+    width: 100%;
+    margin-inline: auto;
+    transition: width 220ms ease, margin 220ms ease;
 }
 .box{
     display: flex;
